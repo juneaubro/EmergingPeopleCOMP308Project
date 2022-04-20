@@ -11,7 +11,21 @@ var GraphQLDate = require('graphql-date');
 var NurseModel = require('../models/Nurse');
 var PatientModel = require('../models/Patient.js');
 var VitalSignsModel = require('../models/VitalSigns.js');
+var EmergencyAlertModel = require('../models/EmergencyAlert');
 
+const emergencyAlertType = new GraphQLObjectType({
+  name: 'emergencyAlert',
+  fields: function () {
+    return {
+      message: {
+        type: GraphQLString
+      },
+      nurse: {
+        type: GraphQLString
+      }
+    }
+  }
+});
 
 const nurseType = new GraphQLObjectType({
     name: 'nurse',
@@ -167,6 +181,32 @@ const nurseType = new GraphQLObjectType({
                 throw new Error('Error')
               }
               return vitalSignsInfo
+            }
+          },
+          emergencyAlerts: {
+            type: new GraphQLList(emergencyAlertType),
+            resolve: function () {
+              const emergencyAlert = EmergencyAlertModel.find().exec()
+              if (!emergencyAlert) {
+                throw new Error('Error')
+              }
+              return emergencyAlert
+            }
+          },
+          emergencyAlertByID: {
+            type: emergencyAlertType,
+            args: {
+              nurse: {
+                name: '_nurse',
+                type: GraphQLString
+              }
+            },
+            resolve: function (root, params) {
+              const emergencyAlertInfo = EmergencyAlertModel.findById(params.id).exec()
+              if (!emergencyAlertInfo) {
+                throw new Error('Error')
+              }
+              return emergencyAlertInfo
             }
           }
       }
@@ -337,6 +377,56 @@ const nurseType = new GraphQLObjectType({
               return newVitalSigns
             }
           },
+          addEmergencyAlert: {
+            type: emergencyAlertType,
+            args: {
+              message: {
+                type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve: function (root, params) {
+              const emergencyAlertModel = new EmergencyAlertModel(params);
+              const newEmergencyAlert = emergencyAlertModel.save();
+              if (!newEmergencyAlert) {
+                throw new Error('Error');
+              }
+              return newEmergencyAlert
+            }
+          },
+          updateEmergencyAlert: {
+            type: emergencyAlertType,
+            args: {
+              message: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              nurse: {
+                  name: 'nurse',
+                  type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve(root, params) {
+              return EmergencyAlertModel.findByIdAndUpdate(params.nurse, { 
+                  message: params.message
+              }, function (err) {
+                if (err) return next(err);
+              });
+            }
+          },
+          deleteEmergencyAlert: {
+            type: emergencyAlertType,
+            args: {
+              nurse: {
+                type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve(root, params) {
+              const deletedEmergencyAlert = EmergencyAlertModel.findByIdAndRemove(params.nurse).exec();
+              if (!deletedEmergencyAlert) {
+                throw new Error('Error')
+              }
+              return deletedEmergencyAlert;
+            }
+          }
       }
     }
   });
