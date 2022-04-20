@@ -19,6 +19,11 @@ import AddStudent from './components/AddStudent';
 import EditStudent from './components/EditStudent';
 import DeleteStudent from './components/DeleteStudent';
 
+import AddAlert from './components/AddAlert';
+import AlertList from './components/AlertList';
+
+import MotivationalVideo1 from './components/MotivationalVideo1';
+
 import Home from './components/Home';
 
 //
@@ -35,6 +40,11 @@ function App() {
         <Link to="/editstudent" style={{ padding: 5 }}>Edit Student</Link>
         <Link to="/deletestudent" style={{ padding: 5 }}>Delete Student</Link>
 
+        <Link to="/alertlist" style={{ padding: 5 }}>Alert List</Link>
+        <Link to="/addalert" style={{ padding: 5 }}>Add Alert</Link>
+
+        <Link to="/motivationalvideo1" style={{ padding: 5 }}>MotivationalVideo #1</Link>
+
       </nav>
 
       <Routes>
@@ -43,7 +53,9 @@ function App() {
         <Route path="/addstudent" element={<AddStudent />} />
         <Route path="/editstudent" element={<EditStudent />} />
         <Route path="/deletestudent" element={<DeleteStudent />} />
-
+        <Route path="/alertlist" element={<AlertList />} />
+        <Route path="/addalert" element={<AddAlert />} />
+        <Route path="/motivationalvideo1" element={<MotivationalVideo1 />} />
       </Routes>
     </div>
       
