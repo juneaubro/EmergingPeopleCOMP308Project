@@ -47,7 +47,7 @@ const nurseType = new GraphQLObjectType({
         fullName: {
           type: GraphQLString
         },
-        nurseNumber: {
+        patientNumber: {
           type: GraphQLString
         },
         password: {
@@ -256,7 +256,7 @@ const nurseType = new GraphQLObjectType({
                 email: {
                 type: new GraphQLNonNull(GraphQLString)
                 },
-                nurseNumber: {
+                patientNumber: {
                 type: new GraphQLNonNull(GraphQLString)
                 },
                 password: {
@@ -281,7 +281,7 @@ const nurseType = new GraphQLObjectType({
                 email: {
                 type: new GraphQLNonNull(GraphQLString)
                 },
-                nurseNumber: {
+                patientNumber: {
                 type: new GraphQLNonNull(GraphQLString)
                 },
                 password: {
@@ -290,7 +290,7 @@ const nurseType = new GraphQLObjectType({
             },
             resolve(root, params) {
               return PatientModel.findByIdAndUpdate(params.id, { fullName: params.fullName, 
-                email: params.email, nurseNumber: params.nurseNumber,
+                email: params.email, patientNumber: params.patientNumber,
                 password: params.password 
                  }, function (err) {
                 if (err) return next(err);
