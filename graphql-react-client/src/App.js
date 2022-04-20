@@ -26,9 +26,12 @@ import MotivationalVideo1 from './components/MotivationalVideo1';
 
 import Home from './components/Home';
 import Login from './components/Login';
+import LoginPatient from './components/LoginPatient';
 
 import AddNurse from './components/AddNurse';
+import AddPatient from './components/AddPatient';
 
+import AddVitalSigns from './components/AddVitalSigns';
 
 import axios from 'axios';
 
@@ -97,13 +100,14 @@ function App() {
       <div>
       <nav style={{ margin: 10 }}>
         <Link to="/" style={{ padding: 5 }}>Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/studentlist" style={{ padding: 5 }}>Student List</Link>
-        <Link to="/addstudent" style={{ padding: 5 }}>Add Student</Link>
-        <Link to="/editstudent" style={{ padding: 5 }}>Edit Student</Link>
-        <Link to="/deletestudent" style={{ padding: 5 }}>Delete Student</Link>
+        <Link to="/login"style={{ padding: 5 }}>Login</Link>
+        <Link to="/loginpatient"style={{ padding: 5 }}>Login Patient</Link>
+       
 
         <Link to="/addnurse" style={{ padding: 5 }}>Add Nurse</Link>
+        <Link to="/addpatient" style={{ padding: 5 }}>Add Patient</Link>
+
+        <Link to="/addvitalsigns" style={{ padding: 5 }}>Add VitalSigns</Link>
 
         <Link to="/alertlist" style={{ padding: 5 }}>Alert List</Link>
         <Link to="/addalert" style={{ padding: 5 }}>Add Alert</Link>
@@ -115,11 +119,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/studentlist" element={<StudentList />} />
+        <Route path="/loginpatient" element={<LoginPatient />} />
+      
         <Route path="/addnurse" element={<AddNurse />} />
-        <Route path="/addstudent" element={<AddStudent />} />
-        <Route path="/editstudent" element={<EditStudent />} />
-        <Route path="/deletestudent" element={<DeleteStudent />} />
+        <Route path="/addpatient" element={<AddPatient />} />
+       
+        <Route path="/addvitalsigns" element={<AddVitalSigns />} />
+       
         <Route path="/alertlist" element={<AlertList />} />
         <Route path="/addalert" element={<AddAlert />} />
         <Route path="/motivationalvideo1" element={<MotivationalVideo1 />} />

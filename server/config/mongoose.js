@@ -17,6 +17,7 @@ module.exports = function() {
 	require('../models/Student');
 	require('../models/Nurse');
 	require('../models/Patient');
+	require('../models/VitalSigns');
 
 	// Load the 'EmergencyAlert model
 	require('../models/EmergencyAlert');

@@ -41,7 +41,6 @@ exports.create = function (req, res, next) {
     nurse.email = req.body.email;
     nurse.nurseNumber = req.body.nurseNumber;
     nurse.password = req.body.password;
-	nurse.vitalSigns = req.body.vitalSigns;
 
     console.log(req.body)
    

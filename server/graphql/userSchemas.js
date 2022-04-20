@@ -10,6 +10,7 @@ var GraphQLInt = require('graphql').GraphQLInt;
 var GraphQLDate = require('graphql-date');
 var NurseModel = require('../models/Nurse');
 var PatientModel = require('../models/Patient.js');
+var VitalSignsModel = require('../models/VitalSigns.js');
 
 
 const nurseType = new GraphQLObjectType({
@@ -58,6 +59,31 @@ const nurseType = new GraphQLObjectType({
       }
     }
   });
+
+
+  const vitalSignsType = new GraphQLObjectType({
+    name: 'vitalSigns',
+    fields: function () {
+      return {
+        _id: {
+          type: GraphQLString
+        },
+        bodyTemp: {
+          type: GraphQLString
+        },
+        heartRate: {
+          type: GraphQLString
+        },
+        bloodPressure: {
+          type: GraphQLString
+        },
+        respiratoryRate: {
+          type: GraphQLString
+        }
+      }
+    }
+  });
+
 
   //
   // create a GraphQL query type that returns all nurses or a nurse by id
@@ -115,6 +141,32 @@ const nurseType = new GraphQLObjectType({
                 throw new Error('Error')
               }
               return patientInfo
+            }
+          },
+          vitals: {
+            type: new GraphQLList(vitalSignsType),
+            resolve: function () {
+              const vitals = VitalSignsModel.find().exec()
+              if (!vitals) {
+                throw new Error('Error')
+              }
+              return vitals
+            }
+          },
+          vitalSigns: {
+            type: vitalSignsType,
+            args: {
+              id: {
+                name: '_id',
+                type: GraphQLString
+              }
+            },
+            resolve: function (root, params) {
+              const vitalSignsInfo = VitalSignsModel.findById(params.id).exec()
+              if (!vitalSignsInfo) {
+                throw new Error('Error')
+              }
+              return vitalSignsInfo
             }
           }
       }
@@ -259,7 +311,32 @@ const nurseType = new GraphQLObjectType({
               }
               return deletedPatient;
             }
-          }
+          },
+          addVitalSigns: {
+            type: vitalSignsType,
+            args: {
+                bodyTemp: {
+                type: new GraphQLNonNull(GraphQLString)
+                },
+                heartRate: {
+                type: new GraphQLNonNull(GraphQLString)
+                },
+                bloodPressure: {
+                type: new GraphQLNonNull(GraphQLString)
+                },
+                respiratoryRate: {
+                type: new GraphQLNonNull(GraphQLString)
+                }
+            },
+            resolve: function (root, params) {
+              const vitalSignsModel = new VitalSignsModel(params);
+              const newVitalSigns = vitalSignsModel.save();
+              if (!newVitalSigns) {
+                throw new Error('Error');
+              }
+              return newVitalSigns
+            }
+          },
       }
     }
   });

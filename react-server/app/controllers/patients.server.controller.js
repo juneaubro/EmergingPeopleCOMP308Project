@@ -41,7 +41,6 @@ exports.create = function (req, res, next) {
     patient.email = req.body.email;
     patient.patientNumber = req.body.patientNumber;
     patient.password = req.body.password;
-	patient.vitalSigns = req.body.vitalSigns;
 
     console.log(req.body)
    
@@ -126,7 +125,7 @@ exports.authenticate = function(req, res, next) {
 			} else {
 			console.log(patient)
 			//compare passwords	
-			
+			console.log("password in auth "+password);
 			if(password === patient.password) {
 				// Create a new token with the user id in the payload
   				// and which expires 300 seconds after issue
