@@ -7,7 +7,8 @@ const configureExpress = require('./config/express');
 //
 const { graphqlHTTP } = require('express-graphql');
 // var schema = require('./graphql/studentSchemas');
-var schema = require('./graphql/emergencyAlertSchemas');
+var schema = require('./graphql/userSchemas');
+//var schema = require('./graphql/emergencyAlertSchemas');
 var cors = require("cors");
 
 
