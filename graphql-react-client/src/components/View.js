@@ -25,8 +25,7 @@ function View (props) {
 
 
       <h4>Created by:</h4>
-      <h5>Nataliia Arsenieva (301043237), Victoria Liu (301028404), </h5>
-      <h5>COMP308 Project</h5>
+      <h5>COMP308 (004) Group 2 - Emerging People</h5>
 
 
 
