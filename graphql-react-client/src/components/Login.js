@@ -19,12 +19,14 @@ function App() {
     console.log(nurseNumber)
     console.log(password)
     try {
+      console.log("in try");
       //make a get request to /authenticate end-point on the server
       const loginData = { auth: { nurseNumber, password } }
       //call api
+      console.log("before post");
       const res = await axios.post(apiUrl, loginData);
-      console.log(res.data.auth)
-      console.log(res.data.screen)
+      console.log("data auth "+ res.data.auth);
+      console.log("data screen " + res.data.screen);
       //process the response
       if (res.data.screen !== undefined) {
         setScreen(res.data.screen);
