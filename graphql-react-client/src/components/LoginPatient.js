@@ -11,7 +11,7 @@ function App() {
   //store input field data, user name and password
   const [patientNumber, setPatientNumber] = useState();
   const [password, setPassword] = useState();
-  const apiUrl = "http://localhost:3000/signin";
+  const apiUrl = "http://localhost:3000/patientsignin";
   //send patientNumber and password to the server
   // for initial authentication
   const auth = async () => {

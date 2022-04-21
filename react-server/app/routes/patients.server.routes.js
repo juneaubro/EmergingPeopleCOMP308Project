@@ -22,7 +22,7 @@ module.exports = function (app) {
     //even if the parameter is matched in multiple routes
     app.param('patientId', patients.patientByID);
     //authenticate patient
-    app.post('/signin', patients.authenticate);
+    app.post('/patientsignin', patients.authenticate);
     //app.post('/login', patients.authenticate);
     app.get('/signout', patients.signout);
     app.get('/read_cookie', patients.isSignedIn);
