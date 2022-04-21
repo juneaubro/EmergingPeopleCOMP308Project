@@ -31,6 +31,9 @@ import AddPatient from './components/AddPatient';
 import AddVitalSigns from './components/AddVitalSigns';
 import VitalSignsList from './components/VitalSignsList';
 
+import AddDailyInformation from './components/AddDailyInfo';
+import DailyInformationList from './components/DailyInfoList';
+
 import axios from 'axios';
 
 //
@@ -113,6 +116,9 @@ function App() {
 
         <Link to="/motivationalvideo1" style={{ padding: 5 }}>MotivationalVideo #1</Link>
 
+        <Link to="/dailyinfolist" style={{ padding: 5 }}>Daily Information List</Link>
+        <Link to="/adddailyinfo" style={{ padding: 5 }}>Add Daily Information</Link>
+
       </nav>
 
       <Routes>
@@ -129,6 +135,9 @@ function App() {
         <Route path="/alertlist" element={<AlertList />} />
         <Route path="/addalert" element={<AddAlert />} />
         <Route path="/motivationalvideo1" element={<MotivationalVideo1 />} />
+
+        <Route path="/dailyinfolist" element={<DailyInformationList />} />
+        <Route path="/adddailyinfo" element={<AddDailyInformation />} />
       </Routes>
     </div>
       

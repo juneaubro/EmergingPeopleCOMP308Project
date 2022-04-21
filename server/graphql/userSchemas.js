@@ -27,6 +27,32 @@ const emergencyAlertType = new GraphQLObjectType({
   }
 });
 
+const dailyInformationType = new GraphQLObjectType({
+  name: 'dailyInformation',
+  fields: function() {
+    return {
+      _id: {
+        type: GraphQLString
+      },
+      pulseRate: {
+        type: GraphQLString
+      },
+      bloodPressure: {
+        type: GraphQLString
+      },
+      weight: {
+        type: GraphQLString
+      },
+      temperature: {
+        type: GraphQLString
+      },
+      respiratoryRate: {
+        type: GraphQLString
+      }
+    }
+  }
+})
+
 const nurseType = new GraphQLObjectType({
     name: 'nurse',
     fields: function () {
@@ -207,6 +233,32 @@ const nurseType = new GraphQLObjectType({
                 throw new Error('Error')
               }
               return emergencyAlertInfo
+            }
+          },
+          dailyInformationAll: {
+            type: new GraphQLList(dailyInformationType),
+            resolve: function () {
+              const dailyInformation = DailyInformationModel.find().exec()
+              if (!dailyInformation) {
+                throw new Error('Error')
+              }
+              return dailyInformation
+            }
+          },
+          dailyInformationByID: {
+            type: dailyInformationType,
+            args: {
+              id: {
+                name: '_id',
+                type: GraphQLString
+              }
+            },
+            resolve: function (root, params) {
+              const dailyInfo = dailyInformationModel.findById(params.id).exec()
+              if (!dailyInfo) {
+                throw new Error('Error')
+              }
+              return dailyInfo
             }
           }
       }
@@ -425,6 +477,76 @@ const nurseType = new GraphQLObjectType({
                 throw new Error('Error')
               }
               return deletedEmergencyAlert;
+            }
+          },
+          addDailyInformation: {
+            type: dailyInformationType,
+            args: {
+              pulseRate: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              bloodPressure: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              weight: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              temperature: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              respiratoryRate: {
+                type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve: function (root, params) {
+              const dailyInformationModel = new DailyInformationModel(params);
+              const newDailyInformation = dailyInformationModel.save();
+              if (!newDailyInformation) {
+                throw new Error('Error');
+              }
+              return newDailyInformation
+            }
+          },
+          updateDailyInformation: {
+            type: dailyInformationType,
+            args: {
+              pulseRate: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              bloodPressure: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              weight: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              temperature: {
+                type: new GraphQLNonNull(GraphQLString)
+              },
+              respiratoryRate: {
+                type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve(root, params) {
+              return DailyInformationModel.findByIdAndUpdate(params.id, { 
+                  pulseRate: params.pulseRate, bloodPressure: params.bloodPressure, weight: params.weight, temperature: params.temperature, respiratoryRate: params.respiratoryRate
+              }, function (err) {
+                if (err) return next(err);
+              });
+            }
+          },
+          deleteDailyInformation: {
+            type: dailyInformationType,
+            args: {
+              id: {
+                type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve(root, params) {
+              const deletedDailyInformation = dailyInformationModel.findByIdAndRemove(params.id).exec();
+              if (!deletedDailyInformation) {
+                throw new Error('Error')
+              }
+              return deletedDailyInformation;
             }
           }
       }
