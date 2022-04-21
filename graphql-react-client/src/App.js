@@ -31,6 +31,8 @@ import AddPatient from './components/AddPatient';
 import AddVitalSigns from './components/AddVitalSigns';
 import VitalSignsList from './components/VitalSignsList';
 
+import AddMotivationalTips from './components/AddMotivationalTips';
+
 import AddDailyInformation from './components/AddDailyInfo';
 import DailyInformationList from './components/DailyInfoList';
 
@@ -111,6 +113,8 @@ function App() {
         <Link to="/addvitalsigns" style={{ padding: 5 }}>Add VitalSigns</Link>
         <Link to="/vitalsignslist" style={{ padding: 5 }}>VitalSigns List</Link>
 
+        <Link to="/addmotivationaltips" style={{ padding: 5 }}>Add Motivational Tips</Link>
+
         <Link to="/alertlist" style={{ padding: 5 }}>Alert List</Link>
         <Link to="/addalert" style={{ padding: 5 }}>Add Alert</Link>
 
@@ -132,6 +136,8 @@ function App() {
         <Route path="/addvitalsigns" element={<AddVitalSigns />} />
         <Route path="/vitalsignslist" element={<VitalSignsList />} />
        
+        <Route path="/addmotivationaltips" element={<AddMotivationalTips />} />
+
         <Route path="/alertlist" element={<AlertList />} />
         <Route path="/addalert" element={<AddAlert />} />
         <Route path="/motivationalvideo1" element={<MotivationalVideo1 />} />

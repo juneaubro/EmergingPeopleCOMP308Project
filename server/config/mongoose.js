@@ -18,6 +18,8 @@ module.exports = function() {
 	require('../models/Patient');
 	require('../models/VitalSigns');
 
+	require('../models/MotivationalTips');
+
 	// Load the 'EmergencyAlert model
 	require('../models/EmergencyAlert');
 

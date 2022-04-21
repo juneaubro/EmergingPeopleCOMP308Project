@@ -12,9 +12,24 @@ var NurseModel = require('../models/Nurse');
 var PatientModel = require('../models/Patient.js');
 var VitalSignsModel = require('../models/VitalSigns.js');
 var EmergencyAlertModel = require('../models/EmergencyAlert');
+var MotivationalTipsModel = require('../models/MotivationalTips');
 
 const emergencyAlertType = new GraphQLObjectType({
   name: 'emergencyAlert',
+  fields: function () {
+    return {
+      message: {
+        type: GraphQLString
+      },
+      nurse: {
+        type: GraphQLString
+      }
+    }
+  }
+});
+
+const motivationalTipsType = new GraphQLObjectType({
+  name: 'motivationalTips',
   fields: function () {
     return {
       message: {
@@ -233,6 +248,32 @@ const nurseType = new GraphQLObjectType({
                 throw new Error('Error')
               }
               return emergencyAlertInfo
+            }
+          },
+          motivationalTips: {
+            type: new GraphQLList(motivationalTipsType),
+            resolve: function () {
+              const motivationalTips = MotivationalTipsModel.find().exec()
+              if (!motivationalTips) {
+                throw new Error('Error')
+              }
+              return motivationalTips
+            }
+          },
+          motivationalTipsByID: {
+            type: motivationalTipsType,
+            args: {
+              nurse: {
+                name: '_nurse',
+                type: GraphQLString
+              }
+            },
+            resolve: function (root, params) {
+              const motivationalTipstInfo = MotivationalTipstModel.findById(params.id).exec()
+              if (!motivationalTipsInfo) {
+                throw new Error('Error')
+              }
+              return motivationalTipsInfo
             }
           },
           dailyInformationAll: {
@@ -477,6 +518,22 @@ const nurseType = new GraphQLObjectType({
                 throw new Error('Error')
               }
               return deletedEmergencyAlert;
+            }
+          },
+          addMotivationalTips: {
+            type: motivationalTipsType,
+            args: {
+              message: {
+                type: new GraphQLNonNull(GraphQLString)
+              }
+            },
+            resolve: function (root, params) {
+              const motivationalTipsModel = new MotivationalTipsModel(params);
+              const newMotivationalTips = motivationalTipsModel.save();
+              if (!newMotivationalTips) {
+                throw new Error('Error');
+              }
+              return newMotivationalTips
             }
           },
           addDailyInformation: {

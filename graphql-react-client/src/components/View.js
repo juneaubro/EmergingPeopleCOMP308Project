@@ -20,7 +20,7 @@ function View (props) {
       <h1>{data}</h1>
 
       <h2>Welcome, please use the nav bar to navigate.</h2>
-      <h2>Start by adding a course</h2>
+      
       
 
 
