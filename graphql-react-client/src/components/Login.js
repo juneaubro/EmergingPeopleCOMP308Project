@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //import ReactDOM from 'react-dom';
-
+import "./styles/Login.css"
 import axios from 'axios';
 //
 import View from './View'
@@ -62,20 +62,20 @@ function App() {
   }, []); //only the first render
   //
   return (
-    <div className="App">
+    <div className="loginContainer">
       {screen === 'auth' 
         ? <div>
-          <label>Nurse Number: </label>
+          <label className = 'labelLogin'>Nurse Number: </label>
           <br/>
-          <input type="text" onChange={e => setNurseNumber(e.target.value)} />
+          <input className = 'inputLogin' type="text" onChange={e => setNurseNumber(e.target.value)} />
           <br/>
-          <label>Password: </label>
+          <label className = 'labelLogin'>Password: </label>
           <br/>
-          <input type="password" onChange={e => setPassword(e.target.value)} />
+          <input className = 'inputLogin' type="password" onChange={e => setPassword(e.target.value)} />
           <br/>
           
           
-          <button onClick={auth}>Login</button>
+          <button className='btnLogin' onClick={auth}>Login</button>
         </div>
         : <View screen={screen} setScreen={setScreen} />
       }

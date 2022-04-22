@@ -1,15 +1,20 @@
 
 import React, { Component }  from 'react';
-
+import {    Link  } from "react-router-dom";
+import { Button} from 'react-bootstrap';
 function Home(props)
 {
 
 
     return (
         <div>
-            <h2> Express - GraphQL - React with CRUD Operations</h2>
-            <p>React front-end calls Express GraphQL API to add, 
-            list, update, or delete.</p>
+            <h2> Choose who you want to login as...</h2>
+            <Link to='/loginpatient'>
+                <Button className='btnLogin'> Login as Client </Button>
+            </Link>
+            <Link to='/login'>
+                <Button className='btnLogin'> Login as Nurse </Button>
+            </Link>
         </div>
     );
 
