@@ -35,6 +35,7 @@ import AddMotivationalTips from './components/AddMotivationalTips';
 
 import AddDailyInformation from './components/AddDailyInfo';
 import DailyInformationList from './components/DailyInfoList';
+import CommonSymptons from './components/CommonSymptons'
 
 import axios from 'axios';
 
@@ -122,6 +123,7 @@ function App() {
 
         <Link to="/dailyinfolist" style={{ padding: 5 }}>Daily Information List</Link>
         <Link to="/adddailyinfo" style={{ padding: 5 }}>Add Daily Information</Link>
+        <Link to="/commonsymptons" style={{ padding: 5 }}>Common Symptons Diagnosis</Link>
 
       </nav>
 
@@ -144,6 +146,7 @@ function App() {
 
         <Route path="/dailyinfolist" element={<DailyInformationList />} />
         <Route path="/adddailyinfo" element={<AddDailyInformation />} />
+        <Route path="/commonsymptons" element={<CommonSymptons />} />
       </Routes>
     </div>
       
