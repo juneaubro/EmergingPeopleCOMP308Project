@@ -51,54 +51,6 @@ function App() {
   };
   return (
 
-    // <Router>
-    //   <Navbar bg="light" expand="lg">
-    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //     <Navbar.Collapse id="basic-navbar-nav">
-    //       <Nav className="mr-auto">
-    //         <Nav.Link href="/home"style={{ padding: 5 }}>Home</Nav.Link>
-           
-    //         <Nav.Link href="/addstudent"style={{ padding: 5 }}>Sign Up</Nav.Link>
-    //         <Nav.Link href="/login"style={{ padding: 5 }}>Login</Nav.Link>
-
-    //         <Nav.Link href="/addnurse"style={{ padding: 5 }}>Add Nurse</Nav.Link>
-            
-           
-    //         <Nav.Link href="/studentlist"style={{ padding: 5 }}>Student List</Nav.Link>
-            
-
-
-    //         <Nav.Link href="/alertlist" style={{ padding: 5 }}>Alert List</Nav.Link>
-    //         <Nav.Link href="/addalert" style={{ padding: 5 }}>Add Alert</Nav.Link>
-
-    //         <Nav.Link href="/motivationalvideo1" style={{ padding: 5 }}>MotivationalVideo #1</Nav.Link>
-
-        
-    //         <Nav.Link href="/signout" onClick={deleteCookie}>Log out</Nav.Link>
-    //       </Nav>
-    //     </Navbar.Collapse>
-    //   </Navbar>
-    
-    //   <div>          
-    //       <Route render ={()=> < Home />} path="/home" />
-    //       <Route render ={()=> < Login />} path="/login" />
-         
-    //       <Route render ={()=> < EditStudent />} path="/edit/:id" />
-    //       <Route render ={()=> < StudentList />} path="/studentlist" />
-    //       <Route render ={()=> < AddStudent />} path="/addstudent" />
-         
-    //       <Route render ={()=> < AddNurse />} path="/addnurse" />
-
-    //       <Route render ={()=> < AlertList />} path="/alertlist" />
-    //       <Route render ={()=> < AddAlert />} path="/addalert" />
-    //       <Route render ={()=> < MotivationalVideo1 />} path="/motivationalvideo1" />
-          
-      
-
-    //   </div>
-
-    // </Router>
-
     <Router>
       
       <div>
@@ -124,6 +76,8 @@ function App() {
         <Link to="/dailyinfolist" style={{ padding: 5 }}>Daily Information List</Link>
         <Link to="/adddailyinfo" style={{ padding: 5 }}>Add Daily Information</Link>
         <Link to="/commonsymptons" style={{ padding: 5 }}>Common Symptons Diagnosis</Link>
+
+        <Link to="/signout" onClick={deleteCookie}>Log out</Link>
 
       </nav>
 

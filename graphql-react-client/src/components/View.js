@@ -16,7 +16,7 @@ function View (props) {
     <div className="App">
       
       
-      <h1>Your Nurse ID: {screen}</h1>
+      <h1>Your ID: {screen}</h1>
       <h1>{data}</h1>
 
       <h2>Welcome, please use the nav bar to navigate.</h2>
