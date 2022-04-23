@@ -35,16 +35,16 @@ const AddAlert = () => {
                     message.value = '';
                 }}
             >
-                <div class="outer_container">
-                <div class="container">
+                <div className="outer_container">
+                <div className="container">
                     <label>
                         <b>Message:</b>
                     </label>
-                    <input type="text" class="fields" name="message" ref={node => {message = node; }} 
+                    <input type="text" className="fields" name="message" ref={node => {message = node; }} 
                     placeholder="Message..." />
                 </div>
-                <div class="container">
-                    <button type="submit" class="fields">Add Alert</button>
+                <div className="container">
+                    <button type="submit" className="fields">Add Alert</button>
                 </div>
                 </div>
             </form>

@@ -43,8 +43,8 @@ const EmergencyAlertList = () => {
              
             </table>
             
-            <div class="center">
-                <button class = "center" onClick={() => refetch()}>Refetch</button>
+            <div className="center">
+                <button className = "center" onClick={() => refetch()}>Refetch</button>
             </div>
             
         </div>
