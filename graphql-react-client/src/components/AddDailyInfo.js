@@ -56,36 +56,36 @@ const AddDailyInformation = () => {
                     respiratoryRate.value = '';
                 }}
             >
-                <div class="outer_container">
-                <div class="container">
+                <div className="outer_container">
+                <div className="container">
                     <label>
                         <b>Pulse Rate:</b>
                     </label>
-                    <input type="text" class="fields" name="pulseRate" ref={node => {pulseRate = node; }}
+                    <input type="text" className="fields" name="pulseRate" ref={node => {pulseRate = node; }}
                         placeholder="Pulse Rate:"/>
                     <label>
                         <b>Blood Pressure:</b>
                     </label>
-                    <input type="text" class="fields" name="bloodPressure" ref={node => {bloodPressure = node; }}
+                    <input type="text" className="fields" name="bloodPressure" ref={node => {bloodPressure = node; }}
                         placeholder="Blood Pressure:"/>
                     <label>
                         <b>Weight:</b>
                     </label>
-                    <input type="text" class="fields" name="pulseRate" ref={node => {pulseRate = node; }}
+                    <input type="text" className="fields" name="pulseRate" ref={node => {weight = node; }}
                         placeholder="Weight:"/>
                     <label>
                         <b>Temperature:</b>
                     </label>
-                    <input type="text" class="fields" name="temperature" ref={node => {temperature = node; }}
+                    <input type="text" className="fields" name="temperature" ref={node => {temperature = node; }}
                         placeholder="Temperature:"/>
                     <label>
                         <b>Respiratory Rate:</b>
                     </label>
-                    <input type="text" class="fields" name="respiratoryRate" ref={node => {respiratoryRate = node; }}
+                    <input type="text" className="fields" name="respiratoryRate" ref={node => {respiratoryRate = node; }}
                         placeholder="Respiratory Rate:"/>
                 </div>
-                <div class="container">
-                    <button type="submit" class="fields">Add Daily Information</button>
+                <div className="container">
+                    <button type="submit" className="fields">Add Daily Information</button>
                 </div>
                 </div>
             </form>

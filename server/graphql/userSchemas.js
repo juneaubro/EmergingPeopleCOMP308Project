@@ -13,6 +13,7 @@ var PatientModel = require('../models/Patient.js');
 var VitalSignsModel = require('../models/VitalSigns.js');
 var EmergencyAlertModel = require('../models/EmergencyAlert');
 var MotivationalTipsModel = require('../models/MotivationalTips');
+var DailyInformationModel = require('../models/DailyInformation');
 
 const emergencyAlertType = new GraphQLObjectType({
   name: 'emergencyAlert',
